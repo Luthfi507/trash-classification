@@ -58,7 +58,11 @@ class ImageDataset(Dataset):
         if self.transform:
             image = self.transform(image) 
 
-        return {'pixel_values': image, 'labels': label}
+        return {
+            'pixel_values': image, 
+            'label_ids': label,
+            'labels': label
+        }
     
 # Transformasi untuk dataset
 train_transform = transforms.Compose([
