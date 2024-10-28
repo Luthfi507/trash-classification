@@ -88,8 +88,16 @@ class CustomModel(nn.Module):
         super().__init__()
         self.model = model
 
-    def forward(self, x):
-        return self.model(x)
+    def forward(self, pixel_values, labels=None):
+        outputs = self.model(pixel_values)
+        
+        # If labels are provided, you can calculate the loss here
+        if labels is not None:
+            loss_fct = nn.CrossEntropyLoss()  # Use CrossEntropyLoss for multi-class classification
+            loss = loss_fct(outputs, labels)
+            return {'loss': loss, 'logits': outputs}
+        
+        return outputs
 
 # Fungsi untuk menghitung akurasi
 def compute_metrics(eval_pred):
