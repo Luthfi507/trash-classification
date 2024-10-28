@@ -60,7 +60,7 @@ class ImageDataset(Dataset):
 
         return {
             'pixel_values': image, 
-            'label_ids': label,
+            'label_ids': torch.tensor(label),
             'labels': label
         }
     
