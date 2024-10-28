@@ -7,3 +7,4 @@ transformers==4.44.2
 evaluate==0.4.3
 wandb==0.18.5
 split-folders==0.5.1
+scikit-learn==1.5.2
